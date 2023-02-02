@@ -21,10 +21,25 @@ final class WebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setWebView()
+        requestURL()
+        
         self.navigationItem.title = search
+        let preferences = WKWebpagePreferences()
+        /** javaScript 사용 설정 */
+        preferences.allowsContentJavaScript = true
+        /** 자동으로 javaScript를 통해 새 창 열기 설정 */
+        let wkPreferences = WKPreferences()
+        wkPreferences.javaScriptCanOpenWindowsAutomatically = true
+        
+        let configuration = WKWebViewConfiguration()
+        /** preference, contentController 설정 */
+        configuration.preferences = wkPreferences
+        configuration.defaultWebpagePreferences = preferences
+      
+        webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        
         
     }
     
@@ -42,31 +57,12 @@ final class WebViewController: BaseViewController {
         }
     }
     
-    func setWebView() {
-        
-        let preferences = WKWebpagePreferences()
-        /** javaScript 사용 설정 */
-        preferences.allowsContentJavaScript = true
-        /** 자동으로 javaScript를 통해 새 창 열기 설정 */
-        let wkPreferences = WKPreferences()
-        wkPreferences.javaScriptCanOpenWindowsAutomatically = true
-        
-        let contentController = WKUserContentController()
-        /** 사용할 메시지 등록 */
-        contentController.add(self, name: "bridge")
-        
-        let configuration = WKWebViewConfiguration()
-        /** preference, contentController 설정 */
-        configuration.preferences = wkPreferences
-        configuration.defaultWebpagePreferences = preferences
-        configuration.userContentController = contentController
-        
-        webView = WKWebView(frame: self.view.bounds, configuration: configuration)
+    func requestURL() {
         
         var components = URLComponents(string: url)!
         components.queryItems = [ URLQueryItem(name: "query", value: search) ]
-        
         let request = URLRequest(url: components.url!)
+        print(request)
         webView.load(request)
         
     }
@@ -85,7 +81,7 @@ extension WebViewController: WKNavigationDelegate {
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
-        print("\(navigationAction.request.url?.absoluteString ?? "")" )
+        //        print("\(navigationAction.request.url?.absoluteString ?? "")" )
         
         if navigationAction.request.url?.absoluteString == "about:blank" {
             decisionHandler(.allow)

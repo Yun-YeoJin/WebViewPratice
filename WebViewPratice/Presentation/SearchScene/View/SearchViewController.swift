@@ -22,7 +22,7 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         bind()
-        
+        self.navigationItem.title = "WebView 사용하기"
     }
     
     func bind() {
@@ -31,7 +31,7 @@ final class SearchViewController: BaseViewController {
             .subscribe(onNext: { [weak self] in
                 let vc = WebViewController()
                 vc.search = self?.mainView.searchTF.text!
-                vc.url = "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&"
+                vc.url = "https://m.search.naver.com/search.naver?"
                 self?.transition(vc, transitionStyle: .push)
             }).disposed(by: disposeBag)
     }
