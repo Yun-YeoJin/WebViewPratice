@@ -27,7 +27,7 @@ final class TabViewController: UITabBarController {
     
     private func configureTabBar() {
         
-        let webVC = setupTabBar(viewController: WebViewController(), title: "WebView", image: UIImage(systemName: "globe.asia.australia.fill")!)
+        let webVC = setupTabBar(viewController: SearchViewController(), title: "WebView", image: UIImage(systemName: "globe.asia.australia.fill")!)
         let safariVC = setupTabBar(viewController: SafariViewController(), title: "Safari", image: UIImage(systemName: "safari")!)
         
         setViewControllers([webVC, safariVC], animated: true)
