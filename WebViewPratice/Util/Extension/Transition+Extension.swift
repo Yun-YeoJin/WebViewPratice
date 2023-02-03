@@ -35,4 +35,14 @@ extension UIViewController {
             self.navigationController?.popToViewController(viewController, animated: true)
         }
     }
+    
+    func navigationPopToViewController<T: UIViewController>(_ vc: T) {
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+
+            for viewController in viewControllers {
+                if let rootVC = viewController as? T {
+                    self.navigationController?.popToViewController(rootVC, animated: true)
+                }
+            }
+        }
 }
