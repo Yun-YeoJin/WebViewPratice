@@ -33,7 +33,7 @@ final class SearchViewController: BaseViewController {
                 let vc = WebViewController()
                 vc.search = self?.mainView.searchTF.text!
                 vc.url = "https://m.search.naver.com/search.naver?"
-                self?.transition(vc, transitionStyle: .push)
+                self?.transition(vc, transitionStyle: .presentFullNavigation)
                 self?.mainView.searchTF.endEditing(true)
             }).disposed(by: disposeBag)
     
