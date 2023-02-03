@@ -18,28 +18,29 @@ final class WebViewController: BaseViewController {
     var search: String!
     var url: String!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "WebView"
+        //SwipeBack Action 없애기
+        //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
+        
         requestURL()
+        //WebView configuration가 url요청 후 이루어져야 함.
+        webViewConfig()
         
-        self.navigationItem.title = search
-        let preferences = WKWebpagePreferences()
-        /** javaScript 사용 설정 */
-        preferences.allowsContentJavaScript = true
-        /** 자동으로 javaScript를 통해 새 창 열기 설정 */
-        let wkPreferences = WKPreferences()
-        wkPreferences.javaScriptCanOpenWindowsAutomatically = true
-        
-        let configuration = WKWebViewConfiguration()
-        /** preference, contentController 설정 */
-        configuration.preferences = wkPreferences
-        configuration.defaultWebpagePreferences = preferences
-      
-        webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        
         
     }
     
@@ -57,7 +58,27 @@ final class WebViewController: BaseViewController {
         }
     }
     
-    func requestURL() {
+    
+    private func webViewConfig() {
+        
+        let preferences = WKWebpagePreferences()
+        /** javaScript 사용 설정 */
+        preferences.allowsContentJavaScript = true
+        /** 자동으로 javaScript를 통해 새 창 열기 설정 */
+        let wkPreferences = WKPreferences()
+        wkPreferences.javaScriptCanOpenWindowsAutomatically = true
+        let contentController = WKUserContentController()
+        contentController.add(self, name: "doneAction")
+        let configuration = WKWebViewConfiguration()
+        /** preference, contentController 설정 */
+        configuration.preferences = wkPreferences
+        configuration.defaultWebpagePreferences = preferences
+        configuration.userContentController = contentController
+      
+        webView = WKWebView(frame: self.view.bounds, configuration: configuration)
+    }
+    
+    private func requestURL() {
         
         var components = URLComponents(string: url)!
         components.queryItems = [ URLQueryItem(name: "query", value: search) ]
@@ -80,8 +101,6 @@ extension WebViewController: WKScriptMessageHandler {
 extension WebViewController: WKNavigationDelegate {
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
-        //        print("\(navigationAction.request.url?.absoluteString ?? "")" )
         
         if navigationAction.request.url?.absoluteString == "about:blank" {
             decisionHandler(.allow)
