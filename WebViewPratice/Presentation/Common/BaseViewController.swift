@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setConstraints()
+        hideKeyboardWhenTappedAround()
     }
     
     func configureUI() {
@@ -21,4 +22,13 @@ class BaseViewController: UIViewController {
     
     func setConstraints() { }
     
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

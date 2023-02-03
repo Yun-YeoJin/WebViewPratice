@@ -22,19 +22,32 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         bind()
-        self.navigationItem.title = "WebView 사용하기"
+        self.navigationItem.title = "WebView"
+        mainView.searchTF.delegate = self
     }
     
     func bind() {
-    
+        
         mainView.searchButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let vc = WebViewController()
                 vc.search = self?.mainView.searchTF.text!
                 vc.url = "https://m.search.naver.com/search.naver?"
                 self?.transition(vc, transitionStyle: .push)
+                self?.mainView.searchTF.endEditing(true)
             }).disposed(by: disposeBag)
+    
     }
     
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
