@@ -11,11 +11,11 @@ import Foundation
 struct NaverNewsDTO: Codable {
     let lastBuildDate: String
     let total, start, display: Int
-    let items: [Item]
+    let items: [NewsItems]
 }
 
 // MARK: - Item
-struct Item: Codable {
+struct NewsItems: Codable {
     let title: String
     let originallink: String
     let link: String

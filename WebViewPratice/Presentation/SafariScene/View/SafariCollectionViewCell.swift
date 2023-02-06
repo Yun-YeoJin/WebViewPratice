@@ -32,11 +32,9 @@ class SafariCollectionViewCell: BaseCollectionViewCell {
         super.init(frame: frame)
         onData.observe(on: MainScheduler.instance)
             .subscribe { [weak self] in
-                self?.titleLbl.text = $0.element?.title
-                self?.pubDateLbl.text = $0.element?.pubDate
-                let url = URL(string: $0.element!.link)
+                self?.titleLbl.text = String(htmlEncodedString: "\($0.element!.title)")
+                self?.pubDateLbl.text = $0.element?.pubDate.toDate()?.toString()
             }.disposed(by: disposeBag)
-        
     }
     
     override func configureUI() {
