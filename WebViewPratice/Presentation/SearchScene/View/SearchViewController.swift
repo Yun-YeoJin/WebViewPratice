@@ -11,8 +11,8 @@ import RxSwift
 
 final class SearchViewController: BaseViewController {
     
-    let mainView = SearchView()
-    var disposeBag = DisposeBag()
+    private let mainView = SearchView()
+    private var disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -21,12 +21,12 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind()
+        bindRX()
         self.navigationItem.title = "WebView"
         mainView.searchTF.delegate = self
     }
     
-    func bind() {
+    private func bindRX() {
         
         mainView.searchButton.rx.tap
             .subscribe(onNext: { [weak self] in

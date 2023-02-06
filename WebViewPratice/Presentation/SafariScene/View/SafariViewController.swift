@@ -14,12 +14,10 @@ import RxDataSources
 
 final class SafariViewController: BaseViewController {
     
-    let mainView = SafariView()
-    let viewModel = SafariViewModel()
+    private let mainView = SafariView()
+    private let viewModel = SafariViewModel()
     private let hud = JGProgressHUD()
-    var disposeBag = DisposeBag()
-    
-    var onData = PublishSubject<NewsItems>()
+    private var disposeBag = DisposeBag()
     
     private var page = 1
     
@@ -40,11 +38,13 @@ final class SafariViewController: BaseViewController {
         navigationItem.titleView = mainView.searchBar
         mainView.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         mainView.collectionView.collectionViewLayout = collectionViewLayout()
+        setGesture()
         bindRX()
+      
         
     }
     
-    func bindRX() {
+    private func bindRX() {
         
         let input = SafariViewModel.Input(viewDidLoadEvent: Observable.just(()), querySubject: PublishSubject<String>(), sortSubject: PublishSubject<String>(), startPageSubject: PublishSubject<Int>(), searchButtonTap: mainView.searchBar.rx.searchButtonClicked)
         
@@ -108,5 +108,41 @@ extension SafariViewController: UICollectionViewDelegate, UIScrollViewDelegate, 
         
         return layout
     }
+    
+}
+
+extension SafariViewController {
+    
+    private func setGesture() {
+          let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
+          swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+          self.mainView.addGestureRecognizer(swipeDown)
+          
+          let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
+          swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+          self.mainView.addGestureRecognizer(swipeUp)
+          
+          let tap = UITapGestureRecognizer(target: self, action: #selector(dismisskeyboard))
+          tap.cancelsTouchesInView = false
+          self.view.addGestureRecognizer(tap)
+      }
+    
+    @objc func dismisskeyboard() {
+        mainView.searchBar.endEditing(true)
+       }
+   
+    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
+          if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+              switch swipeGesture.direction {
+              case UISwipeGestureRecognizer.Direction.up:
+                  mainView.searchBar.becomeFirstResponder()
+              case UISwipeGestureRecognizer.Direction.down:
+                  mainView.searchBar.endEditing(true)
+              default:
+                  break
+              }
+          }
+      }
+    
     
 }

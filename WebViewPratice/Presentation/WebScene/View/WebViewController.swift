@@ -12,18 +12,14 @@ import Then
 
 final class WebViewController: BaseViewController {
     
-    private var webView = WKWebView().then {
-        $0.allowsBackForwardNavigationGestures = true
-    }
-    let toolBar = UIToolbar().then {
-        $0.barStyle = .default
-    }
-    let webBackgroundView = UIView().then {
-        $0.contentMode = .scaleAspectFit
-    }
+    private let mainView = WebView()
     
     var search: String!
     var url: String!
+    
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,47 +38,25 @@ final class WebViewController: BaseViewController {
         
         //SwipeBack Action 없애기
         //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
-        
-        requestURL()
+        configureNaviUI()
+        self.requestURL()
         //WebView configuration가 url요청 후 이루어져야 함.
-        webViewConfig()
+        self.webViewConfig()
         
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
+        self.mainView.webView.uiDelegate = self
+        self.mainView.webView.navigationDelegate = self
+        
+        
         
     }
     
-    override func configureUI() {
-        
-        [webBackgroundView, toolBar].forEach {
-            view.addSubview($0)
-        }
-        webBackgroundView.addSubview(webView)
+    private func configureNaviUI() {
         
         let popButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward.2"), style: .done, target: self, action: #selector(popButtonClicked))
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let gobackButton = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .plain, target: self, action: #selector(gobackButtonClicked))
-        let goforwardButton = UIBarButtonItem(image: UIImage(systemName: "arrow.forward"), style: .plain, target: self, action: #selector(goforwardButtonClicked))
-        let refreshButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(refreshButtonClicked))
-        toolBar.tintColor = .systemGreen
-        toolBar.items = [spacer, gobackButton, spacer, refreshButton, spacer, goforwardButton, spacer]
         navigationItem.leftBarButtonItems = [popButton]
         
     }
     
-    
-    override func setConstraints() {
-        webBackgroundView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view.safeAreaLayoutGuide)
-        }
-        webView.snp.makeConstraints { make in
-            make.edges.equalTo(webBackgroundView.snp.edges)
-        }
-        toolBar.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            
-        }
-    }
     
     private func webViewConfig() {
         
@@ -100,7 +74,7 @@ final class WebViewController: BaseViewController {
         configuration.defaultWebpagePreferences = preferences
         configuration.userContentController = contentController
         
-        webView = WKWebView(frame: self.view.bounds, configuration: configuration)
+        mainView.webView = WKWebView(frame: self.view.bounds, configuration: configuration)
     }
     
     private func requestURL() {
@@ -109,7 +83,7 @@ final class WebViewController: BaseViewController {
         components.queryItems = [ URLQueryItem(name: "query", value: search) ]
         let request = URLRequest(url: components.url!)
         print(request)
-        webView.load(request)
+        mainView.webView.load(request)
         
     }
     
@@ -159,7 +133,7 @@ extension WebViewController: WKUIDelegate {
             completionHandler()
         }
         alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
@@ -173,29 +147,15 @@ extension WebViewController: WKUIDelegate {
         }
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
-//MARK: objc func Methods
+//MARK: Objc func Methods
 extension WebViewController {
     
     @objc func popButtonClicked() {
         dismiss(animated: true)
     }
     
-    @objc func gobackButtonClicked() {
-        print(#function)
-        webView.goBack()
-    }
-    
-    @objc func goforwardButtonClicked() {
-        print(#function)
-        webView.goForward()
-    }
-    
-    @objc func refreshButtonClicked() {
-        print(#function)
-        webView.reload()
-    }
 }
