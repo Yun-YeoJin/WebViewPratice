@@ -10,6 +10,20 @@
 		BE541033298B8B28007EF126 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541032298B8B28007EF126 /* BaseCollectionViewCell.swift */; };
 		BE541038298B946C007EF126 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541037298B946C007EF126 /* Transition+Extension.swift */; };
 		BE54103C298B949E007EF126 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54103B298B949E007EF126 /* WebViewController.swift */; };
+		BE541041298C9634007EF126 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541040298C9634007EF126 /* Router.swift */; };
+		BE541043298C9643007EF126 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541042298C9643007EF126 /* APIService.swift */; };
+		BE541046298C9671007EF126 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BE541045298C9671007EF126 /* Alamofire */; };
+		BE54104A298C9866007EF126 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541049298C9866007EF126 /* NetworkMonitor.swift */; };
+		BE54104C298C9C4F007EF126 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54104B298C9C4F007EF126 /* URL+Extension.swift */; };
+		BE54104E298C9E5C007EF126 /* SafariViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54104D298C9E5C007EF126 /* SafariViewModel.swift */; };
+		BE541050298CA021007EF126 /* NaverNewsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54104F298CA021007EF126 /* NaverNewsDTO.swift */; };
+		BE541052298CA1C1007EF126 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541051298CA1C1007EF126 /* UIViewController+Extension.swift */; };
+		BE541054298CA4E6007EF126 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541053298CA4E6007EF126 /* EndPoint.swift */; };
+		BE541056298CE0FC007EF126 /* SafariCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541055298CE0FC007EF126 /* SafariCollectionViewCell.swift */; };
+		BE541059298CED7C007EF126 /* NewsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541058298CED7C007EF126 /* NewsSectionModel.swift */; };
+		BE54105C298CF1BE007EF126 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54105B298CF1BE007EF126 /* ViewModelType.swift */; };
+		BE54105E29908824007EF126 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54105D29908824007EF126 /* String+Extension.swift */; };
+		BE5410612990C533007EF126 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = BE5410602990C533007EF126 /* RxKeyboard */; };
 		BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A3298B7F6600BAB897 /* AppDelegate.swift */; };
 		BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */; };
 		BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE6625AC298B7F6600BAB897 /* WebViewPratice.xcdatamodeld */; };
@@ -57,6 +71,18 @@
 		BE541032298B8B28007EF126 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE541037298B946C007EF126 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		BE54103B298B949E007EF126 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BE541040298C9634007EF126 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BE541042298C9643007EF126 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BE541049298C9866007EF126 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		BE54104B298C9C4F007EF126 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		BE54104D298C9E5C007EF126 /* SafariViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewModel.swift; sourceTree = "<group>"; };
+		BE54104F298CA021007EF126 /* NaverNewsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverNewsDTO.swift; sourceTree = "<group>"; };
+		BE541051298CA1C1007EF126 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		BE541053298CA4E6007EF126 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		BE541055298CE0FC007EF126 /* SafariCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE541058298CED7C007EF126 /* NewsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSectionModel.swift; sourceTree = "<group>"; };
+		BE54105B298CF1BE007EF126 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		BE54105D29908824007EF126 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BE6625A0298B7F6600BAB897 /* WebViewPratice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewPratice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6625A3298B7F6600BAB897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE541046298C9671007EF126 /* Alamofire in Frameworks */,
 				BE662612298B881300BAB897 /* WebKit.framework in Frameworks */,
 				BE6625DE298B7FF200BAB897 /* RxCocoa in Frameworks */,
 				BE6625D8298B7FBA00BAB897 /* SnapKit in Frameworks */,
@@ -93,6 +120,7 @@
 				BE6625E6298B804000BAB897 /* JGProgressHUD in Frameworks */,
 				BE6625E9298B805600BAB897 /* Toast in Frameworks */,
 				BE6625DB298B7FD000BAB897 /* Then in Frameworks */,
+				BE5410612990C533007EF126 /* RxKeyboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +153,7 @@
 		BE541035298B9345007EF126 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				BE54105A298CF1AC007EF126 /* Protocol */,
 				BE541036298B938D007EF126 /* Extension */,
 			);
 			path = Util;
@@ -134,6 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				BE541037298B946C007EF126 /* Transition+Extension.swift */,
+				BE54104B298C9C4F007EF126 /* URL+Extension.swift */,
+				BE541051298CA1C1007EF126 /* UIViewController+Extension.swift */,
+				BE54105D29908824007EF126 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -151,6 +183,22 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BE541057298CED6D007EF126 /* SectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE541058298CED7C007EF126 /* NewsSectionModel.swift */,
+			);
+			path = SectionModel;
+			sourceTree = "<group>";
+		};
+		BE54105A298CF1AC007EF126 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BE54105B298CF1BE007EF126 /* ViewModelType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		BE662597298B7F6600BAB897 = {
@@ -253,6 +301,7 @@
 		BE6625FA298B827D00BAB897 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BE541057298CED6D007EF126 /* SectionModel */,
 				BE541034298B92F7007EF126 /* WebScene */,
 				BE662605298B869800BAB897 /* SafariScene */,
 				BE6625FC298B82F600BAB897 /* Common */,
@@ -277,8 +326,6 @@
 			children = (
 				BE66260D298B86F100BAB897 /* ViewModel */,
 				BE66260A298B86DC00BAB897 /* View */,
-				BE662606298B86B600BAB897 /* SafariViewController.swift */,
-				BE662608298B86D800BAB897 /* SafariView.swift */,
 			);
 			path = SafariScene;
 			sourceTree = "<group>";
@@ -286,6 +333,9 @@
 		BE66260A298B86DC00BAB897 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE662608298B86D800BAB897 /* SafariView.swift */,
+				BE662606298B86B600BAB897 /* SafariViewController.swift */,
+				BE541055298CE0FC007EF126 /* SafariCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +343,7 @@
 		BE66260D298B86F100BAB897 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BE54104D298C9E5C007EF126 /* SafariViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -300,6 +351,10 @@
 		BE66260E298B878200BAB897 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BE541040298C9634007EF126 /* Router.swift */,
+				BE541042298C9643007EF126 /* APIService.swift */,
+				BE541049298C9866007EF126 /* NetworkMonitor.swift */,
+				BE541053298CA4E6007EF126 /* EndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -307,6 +362,7 @@
 		BE66260F298B879500BAB897 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BE54104F298CA021007EF126 /* NaverNewsDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -343,6 +399,8 @@
 				BE6625E2298B801700BAB897 /* RxDataSources */,
 				BE6625E5298B804000BAB897 /* JGProgressHUD */,
 				BE6625E8298B805600BAB897 /* Toast */,
+				BE541045298C9671007EF126 /* Alamofire */,
+				BE5410602990C533007EF126 /* RxKeyboard */,
 			);
 			productName = WebViewPratice;
 			productReference = BE6625A0298B7F6600BAB897 /* WebViewPratice.app */;
@@ -423,6 +481,8 @@
 				BE6625E1298B801700BAB897 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BE6625E4298B804000BAB897 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				BE6625E7298B805600BAB897 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 			);
 			productRefGroup = BE6625A1298B7F6600BAB897 /* Products */;
 			projectDirPath = "";
@@ -470,14 +530,26 @@
 				BE541038298B946C007EF126 /* Transition+Extension.swift in Sources */,
 				BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */,
 				BE662604298B85BC00BAB897 /* SearchView.swift in Sources */,
+				BE541043298C9643007EF126 /* APIService.swift in Sources */,
 				BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */,
+				BE54104C298C9C4F007EF126 /* URL+Extension.swift in Sources */,
 				BE662609298B86D800BAB897 /* SafariView.swift in Sources */,
 				BE541033298B8B28007EF126 /* BaseCollectionViewCell.swift in Sources */,
+				BE54105E29908824007EF126 /* String+Extension.swift in Sources */,
 				BE662607298B86B600BAB897 /* SafariViewController.swift in Sources */,
+				BE54104A298C9866007EF126 /* NetworkMonitor.swift in Sources */,
+				BE541056298CE0FC007EF126 /* SafariCollectionViewCell.swift in Sources */,
 				BE6625ED298B815100BAB897 /* SearchViewController.swift in Sources */,
+				BE541059298CED7C007EF126 /* NewsSectionModel.swift in Sources */,
 				BE6625FE298B830400BAB897 /* BaseViewController.swift in Sources */,
+				BE541054298CA4E6007EF126 /* EndPoint.swift in Sources */,
 				BE662602298B840D00BAB897 /* TabViewController.swift in Sources */,
+				BE541041298C9634007EF126 /* Router.swift in Sources */,
 				BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */,
+				BE54104E298C9E5C007EF126 /* SafariViewModel.swift in Sources */,
+				BE541050298CA021007EF126 /* NaverNewsDTO.swift in Sources */,
+				BE54105C298CF1BE007EF126 /* ViewModelType.swift in Sources */,
+				BE541052298CA1C1007EF126 /* UIViewController+Extension.swift in Sources */,
 				BE54103C298B949E007EF126 /* WebViewController.swift in Sources */,
 				BE662600298B830800BAB897 /* BaseView.swift in Sources */,
 			);
@@ -577,7 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -631,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -823,6 +895,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		BE6625D6298B7FBA00BAB897 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -874,6 +962,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BE541045298C9671007EF126 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BE5410602990C533007EF126 /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
+		};
 		BE6625D7298B7FBA00BAB897 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BE6625D6298B7FBA00BAB897 /* XCRemoteSwiftPackageReference "SnapKit" */;
