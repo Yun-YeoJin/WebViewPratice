@@ -46,10 +46,10 @@ class SafariViewModel: ViewModelType {
                 input.startPageSubject.onNext(0)
             }.disposed(by: disposeBag)
         
-        input.querySubject
+        Observable.combineLatest(input.querySubject, input.startPageSubject)
             .observe(on: SerialDispatchQueueScheduler(qos: .background))
-            .flatMap { query -> Observable<[NewsItems]> in
-                let observable = self.requestNewsAPI(query: query, display: 20, start: 1, sort: "sim")
+            .flatMap { query, start -> Observable<[NewsItems]> in
+                let observable = self.requestNewsAPI(query: query, display: 20, start: start + 1, sort: "sim")
                 return observable
             }
             .subscribe { newsDetail in

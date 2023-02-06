@@ -11,7 +11,8 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configureUI()
+        setConstraints()
     }
     
     @available(*, unavailable)
