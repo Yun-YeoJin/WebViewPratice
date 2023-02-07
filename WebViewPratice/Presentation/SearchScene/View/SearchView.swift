@@ -23,18 +23,31 @@ final class SearchView: BaseView {
         $0.layer.cornerRadius = 8
     }
     
+    lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reusableIdentifier)
+        $0.backgroundColor = .systemBackground
+        $0.layer.cornerRadius = 8
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.systemGreen.cgColor
+        $0.separatorStyle = .singleLine
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
     }
     
     override func configureUI() {
-        [searchTF, searchButton].forEach {
+        super.configureUI()
+        
+        [searchTF, searchButton, tableView].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
+        super.setConstraints()
+        
         searchTF.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(44)
             make.height.equalTo(60)
@@ -45,7 +58,12 @@ final class SearchView: BaseView {
             make.top.equalTo(searchTF.snp.bottom).offset(16)
             make.height.equalTo(44)
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(searchButton.snp.bottom).offset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+        }
     }
-    
     
 }
