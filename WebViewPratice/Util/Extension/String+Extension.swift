@@ -53,4 +53,11 @@ extension Date {
         return dateformatter.string(from: self)
     }
     
+    func toStringHistory() -> String? {
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "ko_KR")
+        dateformatter.dateFormat = "yyyy/MM/dd - a hh:mm:ss"
+        return dateformatter.string(from: self)
+    }
+    
 }
