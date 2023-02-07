@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol ButtonTappedDelegate: AnyObject {
+    func cellButtonTapped()
+}
+
 class SearchTableViewCell: BaseTableViewCell {
     
     let resultLbl: UILabel = {
@@ -27,18 +31,17 @@ class SearchTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    var btnHandler: (() -> Void)?
+    weak var delegate: ButtonTappedDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.deleteBtn.addTarget(self, action: #selector(deleteBtnClicked(_:)), for: .touchUpInside)
+        deleteBtn.addTarget(self, action: #selector(deleteBtnClicked(_:)), for: .touchUpInside)
         
     }
     
     @objc func deleteBtnClicked(_ sender: UIButton) {
-        print("삭제 버튼이 클릭되었습니다.")
-        btnHandler?()
+        delegate?.cellButtonTapped()
     }
     
     override func configureUI() {
@@ -53,8 +56,8 @@ class SearchTableViewCell: BaseTableViewCell {
             make.trailing.equalTo(deleteBtn.snp.leading).offset(16)
         }
         deleteBtn.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview().inset(16)
-            make.size.equalTo(40)
+            make.top.trailing.bottom.equalToSuperview().inset(8)
+            make.width.equalTo(40)
         }
     }
     

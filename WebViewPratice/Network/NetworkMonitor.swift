@@ -76,8 +76,8 @@ final class NetworkMonitor {
     
     private func showNetworkAlert() -> UIAlertController {
         
-        let alert = UIAlertController(title: "인터넷 연결이 원할하지 않습니다.", message: "wifi 또는 셀룰러를 활성화 해주세요.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
+        let alert = UIAlertController(title: "인터넷 연결이 원활하지 않습니다.", message: "wifi 또는 셀룰러를 활성화 해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
             guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)

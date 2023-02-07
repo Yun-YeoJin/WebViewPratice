@@ -29,6 +29,7 @@ final class SearchView: BaseView {
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.systemGreen.cgColor
+        $0.rowHeight = 60
         $0.separatorStyle = .singleLine
     }
     

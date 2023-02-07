@@ -36,6 +36,7 @@ final class SearchViewController: BaseViewController {
         dataSources?.canEditRowAtIndexPath = { dataSource, indexPath in
             return true
         }
+        
     }
     
     private func bindRX() {
@@ -60,10 +61,7 @@ final class SearchViewController: BaseViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reusableIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
             cell.resultLbl.text = result
-            cell.btnHandler = { [weak self] in
-                let index = indexPath.row
-                print("\(index) 번째 선택")
-            }
+            cell.delegate = self
             return cell
         })
         
@@ -82,9 +80,8 @@ final class SearchViewController: BaseViewController {
             .bind(to: mainView.tableView.rx.items(dataSource: dataSources!))
             .disposed(by: disposeBag)
         
-   
     }
-    
+
 }
 
 extension SearchViewController: UITextFieldDelegate {
@@ -99,9 +96,17 @@ extension SearchViewController: UITextFieldDelegate {
 }
 
 extension SearchViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+extension SearchViewController: ButtonTappedDelegate {
+    
+    func cellButtonTapped() {
+        print("버튼이 클릭 되었습니다.")
     }
     
 }

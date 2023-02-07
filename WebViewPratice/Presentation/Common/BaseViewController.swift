@@ -16,6 +16,12 @@ class BaseViewController: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NetworkMonitor.shared.startMonitoring()
+    }
+    
     func configureUI() {
         view.backgroundColor = .systemBackground
     }
