@@ -15,7 +15,8 @@ final class WebView: BaseView {
     var webView = WKWebView().then {
         $0.allowsBackForwardNavigationGestures = true
     }
-    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)).then {
+    
+    private let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)).then {
         $0.sizeToFit()
     }
 

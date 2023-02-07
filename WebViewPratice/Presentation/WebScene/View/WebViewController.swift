@@ -17,6 +17,8 @@ final class WebViewController: BaseViewController {
     var search: String!
     var url: String!
     
+    var popUpView: WKWebView?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -39,15 +41,13 @@ final class WebViewController: BaseViewController {
         //SwipeBack Action 없애기
         //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
         configureNaviUI()
+        self.mainView.webView.uiDelegate = self
+        self.mainView.webView.navigationDelegate = self
+        popUpView?.uiDelegate = self
         self.requestURL()
         //WebView configuration가 url요청 후 이루어져야 함.
         self.webViewConfig()
-        
-        self.mainView.webView.uiDelegate = self
-        self.mainView.webView.navigationDelegate = self
-        
-        
-        
+                
     }
     
     private func configureNaviUI() {
@@ -60,21 +60,25 @@ final class WebViewController: BaseViewController {
     
     private func webViewConfig() {
         
-        let preferences = WKWebpagePreferences()
         /** javaScript 사용 설정 */
+        let preferences = WKWebpagePreferences()
         preferences.allowsContentJavaScript = true
+        
         /** 자동으로 javaScript를 통해 새 창 열기 설정 */
         let wkPreferences = WKPreferences()
         wkPreferences.javaScriptCanOpenWindowsAutomatically = true
+        
+        /** preference, contentController 설정 */
         let contentController = WKUserContentController()
         contentController.add(self, name: "naver")
+        
         let configuration = WKWebViewConfiguration()
-        /** preference, contentController 설정 */
         configuration.preferences = wkPreferences
         configuration.defaultWebpagePreferences = preferences
         configuration.userContentController = contentController
         
         mainView.webView = WKWebView(frame: self.view.bounds, configuration: configuration)
+       
     }
     
     private func requestURL() {
@@ -93,8 +97,13 @@ final class WebViewController: BaseViewController {
 extension WebViewController: WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print(message.name)
-        print(message.body)
+        
+        print("Call 진입")
+        print(message)
+        
+        if(message.name == "success") {
+            print("success 호출 완료 \(message.body)")
+        }
     }
     
 }
@@ -148,6 +157,23 @@ extension WebViewController: WKUIDelegate {
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        popUpView = WKWebView(frame: self.view.bounds, configuration: configuration)
+        popUpView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(popUpView!)
+        
+        return popUpView
+        
+    }
+    
+    func webViewDidClose(_ webView: WKWebView) {
+        if webView == popUpView {
+            popUpView?.removeFromSuperview()
+            popUpView = nil
+        }
     }
 }
 
