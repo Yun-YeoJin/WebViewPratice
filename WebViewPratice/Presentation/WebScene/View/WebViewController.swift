@@ -40,10 +40,11 @@ final class WebViewController: BaseViewController {
         
         //SwipeBack Action 없애기
         //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
+        
         configureNaviUI()
         self.mainView.webView.uiDelegate = self
         self.mainView.webView.navigationDelegate = self
-        popUpView?.uiDelegate = self
+        
         self.requestURL()
         //WebView configuration가 url요청 후 이루어져야 함.
         self.webViewConfig()
@@ -53,8 +54,7 @@ final class WebViewController: BaseViewController {
     private func configureNaviUI() {
         
         let popButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward.2"), style: .done, target: self, action: #selector(popButtonClicked))
-        navigationItem.leftBarButtonItems = [popButton]
-        
+        navigationItem.leftBarButtonItems = [popButton]        
     }
     
     
@@ -70,7 +70,7 @@ final class WebViewController: BaseViewController {
         
         /** preference, contentController 설정 */
         let contentController = WKUserContentController()
-        contentController.add(self, name: "naver")
+        contentController.add(self, name: "submitToiOS")
         
         let configuration = WKWebViewConfiguration()
         configuration.preferences = wkPreferences
@@ -83,7 +83,7 @@ final class WebViewController: BaseViewController {
     
     private func requestURL() {
         
-        var components = URLComponents(string: url)!
+        var components = URLComponents(string: self.url)!
         components.queryItems = [ URLQueryItem(name: "query", value: search) ]
         let request = URLRequest(url: components.url!)
         print(request)
@@ -164,6 +164,7 @@ extension WebViewController: WKUIDelegate {
         popUpView = WKWebView(frame: self.view.bounds, configuration: configuration)
         popUpView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(popUpView!)
+        popUpView?.uiDelegate = self
         
         return popUpView
         
@@ -175,6 +176,7 @@ extension WebViewController: WKUIDelegate {
             popUpView = nil
         }
     }
+
 }
 
 //MARK: Objc func Methods

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import RxCocoa
 import RxSwift
 import RxDataSources
@@ -29,14 +30,28 @@ final class SearchViewController: BaseViewController {
         
         bindRX()
         self.navigationItem.title = "WebView"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(EditBtnTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Medi쇼핑몰", style: .plain, target: self, action: #selector(MediBtnTapped))
         mainView.searchTF.delegate = self
         mainView.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        dataSources?.canEditRowAtIndexPath = { dataSource, indexPath in
-            return true
-        }
-        
+    }
+    
+    @objc func EditBtnTapped() {
+        mainView.tableView.setEditing(true, animated: true)
+        mainView.tableView.isEditing = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneBtnTapped))
+    }
+    
+    @objc func DoneBtnTapped() {
+        mainView.tableView.setEditing(false, animated: true)
+        mainView.tableView.isEditing = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(EditBtnTapped))
+    }
+    
+    @objc func MediBtnTapped() {
+        transition(MediMallViewController(),transitionStyle: .presentFullNavigation)
     }
     
     private func bindRX() {
@@ -50,7 +65,7 @@ final class SearchViewController: BaseViewController {
                 self?.transition(vc, transitionStyle: .presentFullNavigation)
                 self?.mainView.searchTF.endEditing(true)
                 self?.mainView.tableView.dataSource = nil
-                self?.tableViewRX(result: self?.mainView.searchTF.text ?? "")
+                self?.tableViewRX(result: self?.mainView.searchTF.text ?? "검색어 없음")
             }).disposed(by: disposeBag)
         
     }
@@ -61,7 +76,6 @@ final class SearchViewController: BaseViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reusableIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
             cell.resultLbl.text = result
-            cell.delegate = self
             return cell
         })
         
@@ -72,6 +86,14 @@ final class SearchViewController: BaseViewController {
         
         dataSources?.titleForHeaderInSection = { dataSource, index in
             return dataSource.sectionModels[index].headerTitle
+        }
+        
+        dataSources?.canEditRowAtIndexPath = { dataSource, index in
+            return true
+        }
+        
+        dataSources?.canMoveRowAtIndexPath = { dataSource, index in
+            return false
         }
         
         let data = Observable<[SearchResultSectionModel]>.just(sections)
@@ -101,12 +123,21 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-}
-
-extension SearchViewController: ButtonTappedDelegate {
-    
-    func cellButtonTapped() {
-        print("버튼이 클릭 되었습니다.")
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "삭제") { action, view, completion in
+            print("Section: \(indexPath.section.description)")
+            print("Rows : \(indexPath.row.description)")
+            self.mainView.tableView.beginUpdates()
+//            self.mainView.tableView.deleteSections(IndexSet(arrayLiteral: indexPath.section), with: .automatic)
+//            self.mainView.tableView.deleteRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .automatic)
+            self.mainView.tableView.endUpdates()
+            
+            completion(true)
+        }
+        let config = UISwipeActionsConfiguration(actions: [delete])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
     
 }
+
