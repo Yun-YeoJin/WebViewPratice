@@ -30,6 +30,8 @@
 		BE5410692990F4E2007EF126 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5410682990F4E2007EF126 /* ReusableProtocol.swift */; };
 		BE54106B2991CC27007EF126 /* TableViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106A2991CC27007EF126 /* TableViewSectionModel.swift */; };
 		BE54106D2991D7AF007EF126 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106C2991D7AF007EF126 /* SearchViewModel.swift */; };
+		BE54107029935FCB007EF126 /* MediMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106F29935FCB007EF126 /* MediMallViewController.swift */; };
+		BE54107229939238007EF126 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = BE54107129939238007EF126 /* index.html */; };
 		BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A3298B7F6600BAB897 /* AppDelegate.swift */; };
 		BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */; };
 		BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE6625AC298B7F6600BAB897 /* WebViewPratice.xcdatamodeld */; };
@@ -95,6 +97,8 @@
 		BE5410682990F4E2007EF126 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		BE54106A2991CC27007EF126 /* TableViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionModel.swift; sourceTree = "<group>"; };
 		BE54106C2991D7AF007EF126 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		BE54106F29935FCB007EF126 /* MediMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediMallViewController.swift; sourceTree = "<group>"; };
+		BE54107129939238007EF126 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = "../../../Downloads/-m-app-main/index.html"; sourceTree = "<group>"; };
 		BE6625A0298B7F6600BAB897 /* WebViewPratice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewPratice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6625A3298B7F6600BAB897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +220,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		BE54106E29935FBB007EF126 /* MediMallScene */ = {
+			isa = PBXGroup;
+			children = (
+				BE54106F29935FCB007EF126 /* MediMallViewController.swift */,
+			);
+			path = MediMallScene;
+			sourceTree = "<group>";
+		};
 		BE662597298B7F6600BAB897 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 		BE6625A2298B7F6600BAB897 /* WebViewPratice */ = {
 			isa = PBXGroup;
 			children = (
+				BE54107129939238007EF126 /* index.html */,
 				BE541035298B9345007EF126 /* Util */,
 				BE66260F298B879500BAB897 /* Data */,
 				BE66260E298B878200BAB897 /* Network */,
@@ -318,6 +331,7 @@
 		BE6625FA298B827D00BAB897 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BE54106E29935FBB007EF126 /* MediMallScene */,
 				BE541057298CED6D007EF126 /* SectionModel */,
 				BE541034298B92F7007EF126 /* WebScene */,
 				BE662605298B869800BAB897 /* SafariScene */,
@@ -519,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE6625EB298B806500BAB897 /* .gitignore in Resources */,
+				BE54107229939238007EF126 /* index.html in Resources */,
 				BE6625B3298B7F6700BAB897 /* LaunchScreen.storyboard in Resources */,
 				BE6625B0298B7F6700BAB897 /* Assets.xcassets in Resources */,
 			);
@@ -572,6 +587,7 @@
 				BE54106D2991D7AF007EF126 /* SearchViewModel.swift in Sources */,
 				BE541050298CA021007EF126 /* NaverNewsDTO.swift in Sources */,
 				BE54105C298CF1BE007EF126 /* ViewModelType.swift in Sources */,
+				BE54107029935FCB007EF126 /* MediMallViewController.swift in Sources */,
 				BE541052298CA1C1007EF126 /* UIViewController+Extension.swift in Sources */,
 				BE54106B2991CC27007EF126 /* TableViewSectionModel.swift in Sources */,
 				BE54103C298B949E007EF126 /* WebViewController.swift in Sources */,
