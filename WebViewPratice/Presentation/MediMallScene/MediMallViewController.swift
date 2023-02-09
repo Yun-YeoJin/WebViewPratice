@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import SnapKit
+import JGProgressHUD
 
 final class MediMallViewController: BaseViewController {
     
@@ -19,6 +20,8 @@ final class MediMallViewController: BaseViewController {
     }()
     
     private var popUpView: WKWebView?
+    
+    private var hud = JGProgressHUD()
     
     var jsonString = String()
     
@@ -165,6 +168,9 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     //무조건 첫번째 실행
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         print(#function)
+        print("navigationAction")
+        
+        hud.show(in: self.view, animated: true)
         
         if navigationAction.request.url?.absoluteString == "about:blank" {
             decisionHandler(.allow)
@@ -177,6 +183,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     //3번째 실행
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         print(#function)
+        print("navigationResponse")
         decisionHandler(.allow)
         print("탐색 요청에 대한 응답이 알려진 후 대리인에게 새 콘텐츠 탐색 권한을 요청")
         return
@@ -215,6 +222,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print(#function)
         print("탐색이 완료되었음을 대리자에게 알림")
+        hud.dismiss(animated: true)
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -247,7 +255,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     //Confirm
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         print(#function)
-        let alertController = UIAlertController(title: "Confirm Test", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "🌈세컨드닥터몰🌈", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
             completionHandler(false)
         }
