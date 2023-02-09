@@ -30,6 +30,11 @@ final class MediMallViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+    }
+    
+    deinit {
+        print("deinit 되었습니다.")
     }
     
     
@@ -95,7 +100,7 @@ final class MediMallViewController: BaseViewController {
         
         /* contentController 설정 */
         let contentController = webView.configuration.userContentController
-        contentController.add(self, name: "submitToiOS")
+        contentController.add(LeakAvoider(delegate: self), name: "submitToiOS")
         
         let configuration = WKWebViewConfiguration()
         configuration.preferences = wkPreferences
@@ -118,7 +123,7 @@ final class MediMallViewController: BaseViewController {
         webView.configuration.userContentController.addUserScript(script)
         
         // register the bridge script that listens for the output
-        webView.configuration.userContentController.add(self, name: "logHandler")
+        webView.configuration.userContentController.add(LeakAvoider(delegate: self), name: "logHandler")
         
     }
     
@@ -130,7 +135,6 @@ final class MediMallViewController: BaseViewController {
         let mediComponents = URLComponents(string: "https://m-app.shop/")!
         let mediRequest = URLRequest(url: mediComponents.url!)
         webView.load(mediRequest)
-        
         
         //guard let path = Bundle.main.path(forResource: "index", ofType: "html") else { return }
         //let url = URL(fileURLWithPath: path)
@@ -161,6 +165,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     //무조건 첫번째 실행
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         print(#function)
+        
         if navigationAction.request.url?.absoluteString == "about:blank" {
             decisionHandler(.allow)
             return
@@ -188,9 +193,9 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
         print("웹 보기가 요청에 대한 서버 리디렉션을 수신했음을 대리자에게 알림")
     }
     
-//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//        print("대리자에게 인증 질문에 응답하도록 요청")
-//    }
+    //    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    //        print("대리자에게 인증 질문에 응답하도록 요청")
+    //    }
     
     func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
         print(#function)
@@ -199,8 +204,11 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     
     //4번째 실행
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print(#function)
-        print("웹 보기가 메인 프레임에 대한 콘텐츠를 수신하기 시작했음을 대리자에게 알림")
+        DispatchQueue.main.async {
+            print(#function)
+            print("웹 보기가 메인 프레임에 대한 콘텐츠를 수신하기 시작했음을 대리자에게 알림")
+            
+        }
     }
     
     //마지막 실행

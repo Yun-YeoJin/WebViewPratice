@@ -56,6 +56,7 @@
 		BE662607298B86B600BAB897 /* SafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE662606298B86B600BAB897 /* SafariViewController.swift */; };
 		BE662609298B86D800BAB897 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE662608298B86D800BAB897 /* SafariView.swift */; };
 		BE662612298B881300BAB897 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE662611298B881300BAB897 /* WebKit.framework */; };
+		BE67413B2994B7050062D402 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67413A2994B7050062D402 /* LeakAvoider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		BE662606298B86B600BAB897 /* SafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewController.swift; sourceTree = "<group>"; };
 		BE662608298B86D800BAB897 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		BE662611298B881300BAB897 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		BE67413A2994B7050062D402 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				BE54105A298CF1AC007EF126 /* Protocol */,
 				BE541036298B938D007EF126 /* Extension */,
+				BE67413A2994B7050062D402 /* LeakAvoider.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				BE5410692990F4E2007EF126 /* ReusableProtocol.swift in Sources */,
 				BE662609298B86D800BAB897 /* SafariView.swift in Sources */,
 				BE541033298B8B28007EF126 /* BaseCollectionViewCell.swift in Sources */,
+				BE67413B2994B7050062D402 /* LeakAvoider.swift in Sources */,
 				BE54105E29908824007EF126 /* String+Extension.swift in Sources */,
 				BE5410652990F2EA007EF126 /* SearchTableViewCell.swift in Sources */,
 				BE662607298B86B600BAB897 /* SafariViewController.swift in Sources */,
