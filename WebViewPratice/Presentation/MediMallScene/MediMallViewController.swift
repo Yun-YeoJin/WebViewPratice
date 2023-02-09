@@ -11,12 +11,16 @@ import SnapKit
 
 final class MediMallViewController: BaseViewController {
     
-    private var webView = WKWebView()
+    private var webView: WKWebView = {
+        let view = WKWebView()
+        view.allowsBackForwardNavigationGestures = true
+        view.scrollView.isScrollEnabled = true
+        return view
+    }()
+    
     private var popUpView: WKWebView?
     
     var jsonString = String()
-    
-  
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,7 +32,7 @@ final class MediMallViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +40,8 @@ final class MediMallViewController: BaseViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(closeBtnTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "바인딩", style: .plain, target: self, action: #selector(bindBtnTapped))
         
-        
         webView.uiDelegate = self
         webView.navigationDelegate = self
-   
         
         requestMediUrl()
         webViewConfig()
@@ -54,8 +56,8 @@ final class MediMallViewController: BaseViewController {
         
         webView.evaluateJavaScript("getName()") { (success, error) in
             
-            print(success)
-            print(error?.localizedDescription)
+            print(success as Any)
+            print(error?.localizedDescription as Any)
             
         }
         
@@ -65,6 +67,7 @@ final class MediMallViewController: BaseViewController {
         super.configureUI()
         
         [webView].forEach {
+            
             view.addSubview($0)
         }
         
@@ -128,11 +131,11 @@ final class MediMallViewController: BaseViewController {
         let mediRequest = URLRequest(url: mediComponents.url!)
         webView.load(mediRequest)
         
-
-//        guard let path = Bundle.main.path(forResource: "index", ofType: "html") else { return }
-//        let url = URL(fileURLWithPath: path)
-//        let urlRequest = URLRequest(url: url)
-//        webView.load(urlRequest)
+        
+        //guard let path = Bundle.main.path(forResource: "index", ofType: "html") else { return }
+        //let url = URL(fileURLWithPath: path)
+        //let urlRequest = URLRequest(url: url)
+        //webView.load(urlRequest)
         
     }
     
@@ -155,37 +158,77 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
             
         }
     
+    //무조건 첫번째 실행
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
-        //        if navigationAction.request.url?.absoluteString == "about:blank" {
-        //            decisionHandler(.allow)
-        //            return
-        //        }
+        print(#function)
+        if navigationAction.request.url?.absoluteString == "about:blank" {
+            decisionHandler(.allow)
+            return
+        }
         
         decisionHandler(.allow)
     }
     
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        
-//        let alertController = UIAlertController(title: "어서오세요! 세컨드닥터몰입니다.", message: nil, preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "확인", style: .cancel)
-//        alertController.addAction(cancelAction)
-//        self.present(alertController, animated: true, completion: nil)
-        
+    //3번째 실행
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        print(#function)
+        decisionHandler(.allow)
+        print("탐색 요청에 대한 응답이 알려진 후 대리인에게 새 콘텐츠 탐색 권한을 요청")
+        return
     }
     
+    //2번째 실행
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print(#function)
+        print("주 프레임에서 탐색이 시작되었음을 대리자에게 알림")
+    }
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        print(#function)
+        print("웹 보기가 요청에 대한 서버 리디렉션을 수신했음을 대리자에게 알림")
+    }
+    
+//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        print("대리자에게 인증 질문에 응답하도록 요청")
+//    }
+    
+    func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
+        print(#function)
+        print("사용되지 않는 버전의 TLS를 사용하는 연결을 계속할지 여부를 대리자에게 물음")
+    }
+    
+    //4번째 실행
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print(#function)
+        print("웹 보기가 메인 프레임에 대한 콘텐츠를 수신하기 시작했음을 대리자에게 알림")
+    }
+    
+    //마지막 실행
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print(#function)
+        print("탐색이 완료되었음을 대리자에게 알림")
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        
+        print(#function)
+        print("탐색 중 오류가 발생했음을 대리자에게 알림")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print(#function)
+        print("초기 탐색 프로세스 중에 오류가 발생했음을 대리자에게 알림")
+    }
+    
+    //버튼 클릭 시 호출 후 runJavaScriptAlertPanelWithMessage로 이동
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        print(#function)
+        print("웹 보기의 콘텐츠 프로세스가 종료되었음을 대리자에게 알림")
     }
     
     //Alert
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         print(#function)
-        let alertController = UIAlertController(title: "클릭되었습니다.", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "🌈세컨드닥터몰🌈", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "확인", style: .cancel) { _ in
             completionHandler()
         }
@@ -196,7 +239,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
     //Confirm
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         print(#function)
-        let alertController = UIAlertController(title: "test", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Confirm Test", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
             completionHandler(false)
         }

@@ -30,24 +30,11 @@ final class SearchViewController: BaseViewController {
         
         bindRX()
         self.navigationItem.title = "WebView"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(EditBtnTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Medi쇼핑몰", style: .plain, target: self, action: #selector(MediBtnTapped))
         mainView.searchTF.delegate = self
         mainView.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-    }
-    
-    @objc func EditBtnTapped() {
-        mainView.tableView.setEditing(true, animated: true)
-        mainView.tableView.isEditing = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneBtnTapped))
-    }
-    
-    @objc func DoneBtnTapped() {
-        mainView.tableView.setEditing(false, animated: true)
-        mainView.tableView.isEditing = false
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(EditBtnTapped))
     }
     
     @objc func MediBtnTapped() {
@@ -76,6 +63,7 @@ final class SearchViewController: BaseViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reusableIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
             cell.resultLbl.text = result
+        
             return cell
         })
         
