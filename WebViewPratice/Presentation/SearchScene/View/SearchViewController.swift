@@ -29,12 +29,16 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         bindRX()
-        self.navigationItem.title = "WebView"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Medi쇼핑몰", style: .plain, target: self, action: #selector(MediBtnTapped))
+        configureNaviUI()
         mainView.searchTF.delegate = self
         mainView.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+    }
+    
+    private func configureNaviUI() {
+        self.navigationItem.title = "WebView"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Medi쇼핑몰", style: .plain, target: self, action: #selector(MediBtnTapped))
     }
     
     @objc func MediBtnTapped() {
@@ -121,7 +125,7 @@ extension SearchViewController: UITableViewDelegate {
             print("Section: \(indexPath.section.description)")
             print("Rows : \(indexPath.row.description)")
             self.mainView.tableView.beginUpdates()
-//            self.mainView.tableView.deleteSections(IndexSet(arrayLiteral: indexPath.section), with: .automatic)
+            self.mainView.tableView.deleteSections([indexPath.section], animationStyle: .automatic)
 //            self.mainView.tableView.deleteRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .automatic)
             self.mainView.tableView.endUpdates()
             

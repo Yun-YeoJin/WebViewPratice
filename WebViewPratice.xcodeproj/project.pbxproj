@@ -32,6 +32,9 @@
 		BE54106D2991D7AF007EF126 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106C2991D7AF007EF126 /* SearchViewModel.swift */; };
 		BE54107029935FCB007EF126 /* MediMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106F29935FCB007EF126 /* MediMallViewController.swift */; };
 		BE54107229939238007EF126 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = BE54107129939238007EF126 /* index.html */; };
+		BE6300E62995DDF00024D131 /* OnBoarding.gif in Resources */ = {isa = PBXBuildFile; fileRef = BE6300E52995DDF00024D131 /* OnBoarding.gif */; };
+		BE6300E92995DEA90024D131 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = BE6300E82995DEA90024D131 /* Gifu */; };
+		BE6300EC2995DFC80024D131 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300EB2995DFC80024D131 /* SplashViewController.swift */; };
 		BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A3298B7F6600BAB897 /* AppDelegate.swift */; };
 		BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */; };
 		BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE6625AC298B7F6600BAB897 /* WebViewPratice.xcdatamodeld */; };
@@ -100,6 +103,8 @@
 		BE54106C2991D7AF007EF126 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		BE54106F29935FCB007EF126 /* MediMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediMallViewController.swift; sourceTree = "<group>"; };
 		BE54107129939238007EF126 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = "../../../Downloads/-m-app-main/index.html"; sourceTree = "<group>"; };
+		BE6300E52995DDF00024D131 /* OnBoarding.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OnBoarding.gif; sourceTree = "<group>"; };
+		BE6300EB2995DFC80024D131 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BE6625A0298B7F6600BAB897 /* WebViewPratice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewPratice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6625A3298B7F6600BAB897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE541046298C9671007EF126 /* Alamofire in Frameworks */,
+				BE6300E92995DEA90024D131 /* Gifu in Frameworks */,
 				BE662612298B881300BAB897 /* WebKit.framework in Frameworks */,
 				BE6625DE298B7FF200BAB897 /* RxCocoa in Frameworks */,
 				BE6625D8298B7FBA00BAB897 /* SnapKit in Frameworks */,
@@ -231,6 +237,14 @@
 			path = MediMallScene;
 			sourceTree = "<group>";
 		};
+		BE6300EA2995DFB70024D131 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300EB2995DFC80024D131 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		BE662597298B7F6600BAB897 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +270,7 @@
 		BE6625A2298B7F6600BAB897 /* WebViewPratice */ = {
 			isa = PBXGroup;
 			children = (
+				BE6300E52995DDF00024D131 /* OnBoarding.gif */,
 				BE54107129939238007EF126 /* index.html */,
 				BE541035298B9345007EF126 /* Util */,
 				BE66260F298B879500BAB897 /* Data */,
@@ -334,6 +349,7 @@
 		BE6625FA298B827D00BAB897 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BE6300EA2995DFB70024D131 /* Splash */,
 				BE54106E29935FBB007EF126 /* MediMallScene */,
 				BE541057298CED6D007EF126 /* SectionModel */,
 				BE541034298B92F7007EF126 /* WebScene */,
@@ -436,6 +452,7 @@
 				BE6625E8298B805600BAB897 /* Toast */,
 				BE541045298C9671007EF126 /* Alamofire */,
 				BE5410602990C533007EF126 /* RxKeyboard */,
+				BE6300E82995DEA90024D131 /* Gifu */,
 			);
 			productName = WebViewPratice;
 			productReference = BE6625A0298B7F6600BAB897 /* WebViewPratice.app */;
@@ -518,6 +535,7 @@
 				BE6625E7298B805600BAB897 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */,
 			);
 			productRefGroup = BE6625A1298B7F6600BAB897 /* Products */;
 			projectDirPath = "";
@@ -538,6 +556,7 @@
 				BE6625EB298B806500BAB897 /* .gitignore in Resources */,
 				BE54107229939238007EF126 /* index.html in Resources */,
 				BE6625B3298B7F6700BAB897 /* LaunchScreen.storyboard in Resources */,
+				BE6300E62995DDF00024D131 /* OnBoarding.gif in Resources */,
 				BE6625B0298B7F6700BAB897 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +585,7 @@
 				BE541038298B946C007EF126 /* Transition+Extension.swift in Sources */,
 				BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */,
 				BE662604298B85BC00BAB897 /* SearchView.swift in Sources */,
+				BE6300EC2995DFC80024D131 /* SplashViewController.swift in Sources */,
 				BE541043298C9643007EF126 /* APIService.swift in Sources */,
 				BE5410672990F315007EF126 /* BaseTableViewCell.swift in Sources */,
 				BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */,
@@ -955,6 +975,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kaishin/Gifu.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.4.0;
+			};
+		};
 		BE6625D6298B7FBA00BAB897 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1015,6 +1043,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
+		};
+		BE6300E82995DEA90024D131 /* Gifu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */;
+			productName = Gifu;
 		};
 		BE6625D7298B7FBA00BAB897 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

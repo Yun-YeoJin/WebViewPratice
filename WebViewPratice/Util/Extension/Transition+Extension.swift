@@ -11,6 +11,7 @@ extension UIViewController {
     
     enum TransitionStyle {
         case present //네비게이션 없이 present
+        case fullpresent //네비게이션 없이 Full Screen
         case presentNavigation //네비게이션 임베드 present
         case presentFullNavigation //네비게이션 풀스크린
         case push //푸시
@@ -22,6 +23,10 @@ extension UIViewController {
         switch transitionStyle {
         case .present:
             self.present(viewController, animated: true) //self.present(T(), animated: true)와 차이.
+        case .fullpresent:
+            let vc = viewController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         case .presentNavigation:
             let navi = UINavigationController(rootViewController: viewController)
             self.present(navi, animated: true)
