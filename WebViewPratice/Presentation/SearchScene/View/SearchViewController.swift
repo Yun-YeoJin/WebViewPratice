@@ -46,10 +46,7 @@ final class SearchViewController: BaseViewController {
         mainView.searchButton.rx.tap
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
-                let vc = WebViewController()
-                vc.search = self?.mainView.searchTF.text!
-                vc.url = "https://m.search.naver.com/search.naver?"
-                self?.transition(vc, transitionStyle: .presentFullNavigation)
+                self?.goToWebVC()
                 self?.mainView.searchTF.endEditing(true)
                 self?.mainView.tableView.dataSource = nil
                 self?.tableViewRX(result: self?.mainView.searchTF.text ?? "검색어 없음")
@@ -57,20 +54,28 @@ final class SearchViewController: BaseViewController {
         
     }
     
+    private func goToWebVC() {
+        let vc = WebViewController()
+        vc.search = mainView.searchTF.text!
+        vc.url = "https://m.search.naver.com/search.naver?"
+        transition(vc, transitionStyle: .presentFullNavigation)
+    }
+    
+    
     private func tableViewRX(result: String) {
-        
-        dataSources = RxTableViewSectionedReloadDataSource(configureCell:  { dataSource, tableView, indexPath, item in
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reusableIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
-            cell.resultLbl.text = result
-        
-            return cell
-        })
         
         sections.append(SearchResultSectionModel(
             headerTitle: "\(Date().toStringHistory()!) 에 검색됨.",
             items: [SearchResult(result: result)]
         ))
+        
+        dataSources = RxTableViewSectionedReloadDataSource(configureCell:  { dataSource, tableView, indexPath, item in
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reusableIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+            cell.resultLbl.text = item.result
+        
+            return cell
+        })
         
         dataSources?.titleForHeaderInSection = { dataSource, index in
             return dataSource.sectionModels[index].headerTitle

@@ -40,8 +40,11 @@ final class SafariViewController: BaseViewController {
         mainView.collectionView.collectionViewLayout = collectionViewLayout()
         setGesture()
         bindRX()
-      
         
+    }
+    
+    deinit {
+        print("deinit 되었습니다.")
     }
     
     private func bindRX() {

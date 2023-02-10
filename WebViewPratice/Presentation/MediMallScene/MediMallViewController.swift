@@ -116,7 +116,6 @@ final class MediMallViewController: BaseViewController {
     
     private func configureConsoleLog() {
         
-        // inject JS to capture console.log output and send to iOS
         let source = """
             function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); }
             window.console.log = captureLog;
@@ -124,8 +123,6 @@ final class MediMallViewController: BaseViewController {
         let script = WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         
         webView.configuration.userContentController.addUserScript(script)
-        
-        // register the bridge script that listens for the output
         webView.configuration.userContentController.add(LeakAvoider(delegate: self), name: "logHandler")
         
     }
@@ -138,12 +135,7 @@ final class MediMallViewController: BaseViewController {
         let mediComponents = URLComponents(string: "https://m-app.shop/")!
         let mediRequest = URLRequest(url: mediComponents.url!)
         webView.load(mediRequest)
-        
-        //guard let path = Bundle.main.path(forResource: "index", ofType: "html") else { return }
-        //let url = URL(fileURLWithPath: path)
-        //let urlRequest = URLRequest(url: url)
-        //webView.load(urlRequest)
-        
+
     }
     
 }
@@ -199,10 +191,6 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
         print(#function)
         print("웹 보기가 요청에 대한 서버 리디렉션을 수신했음을 대리자에게 알림")
     }
-    
-    //    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-    //        print("대리자에게 인증 질문에 응답하도록 요청")
-    //    }
     
     func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
         print(#function)

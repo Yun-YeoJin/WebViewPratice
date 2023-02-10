@@ -51,6 +51,10 @@ final class WebViewController: BaseViewController {
                 
     }
     
+    deinit {
+        print("deinit 되었습니다.")
+    }
+    
     private func configureNaviUI() {
         
         let popButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward.2"), style: .done, target: self, action: #selector(popButtonClicked))
@@ -70,7 +74,7 @@ final class WebViewController: BaseViewController {
         
         /** preference, contentController 설정 */
         let contentController = WKUserContentController()
-        contentController.add(self, name: "submitToiOS")
+        contentController.add(LeakAvoider(delegate: self), name: "submitToiOS")
         
         let configuration = WKWebViewConfiguration()
         configuration.preferences = wkPreferences
