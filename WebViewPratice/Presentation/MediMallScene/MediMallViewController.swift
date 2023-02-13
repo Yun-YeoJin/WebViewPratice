@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 import SnapKit
 import JGProgressHUD
+import SwiftUI
 
 final class MediMallViewController: BaseViewController {
     
@@ -53,8 +54,7 @@ final class MediMallViewController: BaseViewController {
         
         requestMediUrl()
         webViewConfig()
-        configureConsoleLog()
-        
+        configureConsoleLog(webView: webView)
         
     }
     
@@ -114,19 +114,6 @@ final class MediMallViewController: BaseViewController {
         
     }
     
-    private func configureConsoleLog() {
-        
-        let source = """
-            function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); }
-            window.console.log = captureLog;
-        """
-        let script = WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: false)
-        
-        webView.configuration.userContentController.addUserScript(script)
-        webView.configuration.userContentController.add(LeakAvoider(delegate: self), name: "logHandler")
-        
-    }
-    
     private func requestMediUrl() {
         
         let userScript = WKUserScript(source: "getName()", injectionTime: .atDocumentEnd, forMainFrameOnly: true)
@@ -140,12 +127,12 @@ final class MediMallViewController: BaseViewController {
     
 }
 
-extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate {
+extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
     
-    func userContentController(
+    override func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage) {
-            
+
             switch message.name {
             case "submitToiOS":
                 print("submitToiOS 호출 완료 \(message.body)")
@@ -154,7 +141,7 @@ extension MediMallViewController: WKScriptMessageHandler, WKNavigationDelegate, 
             default:
                 print("error")
             }
-            
+
         }
     
     //무조건 첫번째 실행
@@ -311,3 +298,4 @@ extension MediMallViewController {
     }
     
 }
+

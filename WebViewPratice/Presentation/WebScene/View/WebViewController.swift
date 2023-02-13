@@ -48,6 +48,7 @@ final class WebViewController: BaseViewController {
         self.requestURL()
         //WebView configuration가 url요청 후 이루어져야 함.
         self.webViewConfig()
+        configureConsoleLog(webView: mainView.webView)
                 
     }
     
@@ -98,9 +99,9 @@ final class WebViewController: BaseViewController {
 }
 
 //MARK: 이 메서드를 통해 Bridge가 들어오게 됨
-extension WebViewController: WKScriptMessageHandler {
+extension WebViewController {
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    override func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
         print("Call 진입")
         print(message)
@@ -191,3 +192,15 @@ extension WebViewController {
     }
     
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct WebViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        WebViewController().showPreview(.iPhone8)
+    }
+}
+#endif
+
+
