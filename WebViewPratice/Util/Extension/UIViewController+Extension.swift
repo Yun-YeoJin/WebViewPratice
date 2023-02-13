@@ -28,4 +28,54 @@ extension UIViewController {
             return currentViewController
         }
     }
+    
+    func showConfirm(title: String, message: String, btnTitle: String, btnStyle: UIAlertAction.Style, okBtnAction: @escaping ((UIAlertAction) -> Void ), cancelBtnAction: @escaping ((UIAlertAction) -> Void )) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: btnStyle, handler: cancelBtnAction)
+        let ok = UIAlertAction(title: btnTitle, style: btnStyle, handler: okBtnAction)
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+        
+    }
+    
+    func showAlert(title: String, message: String, btnTitle: String, btnStyle: UIAlertAction.Style, okBtnAction: @escaping ((UIAlertAction) -> Void ), cancelBtnAction: @escaping ((UIAlertAction) -> Void )) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: btnTitle, style: btnStyle, handler: okBtnAction)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+        
+    }
+    
+    
+    
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+extension UIViewController {
+
+    private struct Preview: UIViewControllerRepresentable {
+        let viewController: UIViewController
+
+        func makeUIViewController(context: Context) -> UIViewController {
+            return viewController
+        }
+
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        }
+    }
+    
+    func toPreview() -> some View {
+        
+        Preview(viewController: self)
+    }
+
+    func showPreview(_ deviceType: DeviceType = .iPhone13Pro) -> some View {
+        Preview(viewController: self).previewDevice(PreviewDevice(rawValue: deviceType.name()))
+    }
+}
+#endif
+

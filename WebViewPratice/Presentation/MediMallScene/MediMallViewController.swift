@@ -219,27 +219,25 @@ extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
     //Alert
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         print(#function)
-        let alertController = UIAlertController(title: "🌈세컨드닥터몰🌈", message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "확인", style: .cancel) { _ in
+        
+        showAlert(title: "🌈세컨드닥터몰🌈", message: message, btnTitle: "확인", btnStyle: .cancel) { okAction in
             completionHandler()
+        }   cancelBtnAction: { cancelAction in
+            return
         }
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+    
     }
     
     //Confirm
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         print(#function)
-        let alertController = UIAlertController(title: "🌈세컨드닥터몰🌈", message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
+        
+        showConfirm(title: "🌈세컨드닥터몰🌈", message: message, btnTitle: "확인", btnStyle: .default) { okAction in
+            completionHandler(true)
+        } cancelBtnAction: { cancelAction in
             completionHandler(false)
         }
-        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
-            completionHandler(true)
-        }
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+
     }
     
     //Open Window
