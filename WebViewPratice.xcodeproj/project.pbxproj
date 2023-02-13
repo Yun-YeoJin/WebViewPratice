@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE29D2842999C5CE0069D607 /* NaverNewsAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D2832999C5CE0069D607 /* NaverNewsAPIProtocol.swift */; };
+		BE29D2872999C7C70069D607 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BE29D2862999C7C70069D607 /* Realm */; };
+		BE29D2892999C7C70069D607 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE29D2882999C7C70069D607 /* RealmSwift */; };
+		BE29D28D2999C81F0069D607 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D28C2999C81F0069D607 /* LoginData.swift */; };
+		BE29D28F2999C8390069D607 /* LoginListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D28E2999C8390069D607 /* LoginListData.swift */; };
+		BE29D2912999C9490069D607 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D2902999C9490069D607 /* LoginRepository.swift */; };
+		BE29D2932999C9A30069D607 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D2922999C9A30069D607 /* LoginDTO.swift */; };
+		BE29D2982999CE100069D607 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D2972999CE100069D607 /* DeviceType.swift */; };
+		BE29D29A2999F76F0069D607 /* ConsoleLogProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D2992999F76F0069D607 /* ConsoleLogProtocol.swift */; };
 		BE541033298B8B28007EF126 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541032298B8B28007EF126 /* BaseCollectionViewCell.swift */; };
 		BE541038298B946C007EF126 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE541037298B946C007EF126 /* Transition+Extension.swift */; };
 		BE54103C298B949E007EF126 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54103B298B949E007EF126 /* WebViewController.swift */; };
@@ -33,8 +42,16 @@
 		BE54107029935FCB007EF126 /* MediMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54106F29935FCB007EF126 /* MediMallViewController.swift */; };
 		BE54107229939238007EF126 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = BE54107129939238007EF126 /* index.html */; };
 		BE6300E62995DDF00024D131 /* OnBoarding.gif in Resources */ = {isa = PBXBuildFile; fileRef = BE6300E52995DDF00024D131 /* OnBoarding.gif */; };
-		BE6300E92995DEA90024D131 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = BE6300E82995DEA90024D131 /* Gifu */; };
 		BE6300EC2995DFC80024D131 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300EB2995DFC80024D131 /* SplashViewController.swift */; };
+		BE6300EF299601F10024D131 /* RxDataSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300EE299601F10024D131 /* RxDataSourceViewController.swift */; };
+		BE6300F3299602000024D131 /* RxDataSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300F2299602000024D131 /* RxDataSourceViewModel.swift */; };
+		BE6300F52996025F0024D131 /* RxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300F42996025F0024D131 /* RxDataSource.swift */; };
+		BE6300F7299602DB0024D131 /* GridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300F6299602DB0024D131 /* GridTableViewCell.swift */; };
+		BE6300F9299603050024D131 /* IndicatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300F8299603050024D131 /* IndicatorTableViewCell.swift */; };
+		BE6300FB299603270024D131 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6300FA299603270024D131 /* SwitchTableViewCell.swift */; };
+		BE6301012996054B0024D131 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6301002996054B0024D131 /* GridViewModel.swift */; };
+		BE6301032996056E0024D131 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6301022996056E0024D131 /* GridCollectionViewCell.swift */; };
+		BE63010529960BC60024D131 /* RxDataSourceSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63010429960BC60024D131 /* RxDataSourceSectionModel.swift */; };
 		BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A3298B7F6600BAB897 /* AppDelegate.swift */; };
 		BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */; };
 		BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE6625AC298B7F6600BAB897 /* WebViewPratice.xcdatamodeld */; };
@@ -80,6 +97,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE29D2832999C5CE0069D607 /* NaverNewsAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverNewsAPIProtocol.swift; sourceTree = "<group>"; };
+		BE29D28C2999C81F0069D607 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		BE29D28E2999C8390069D607 /* LoginListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginListData.swift; sourceTree = "<group>"; };
+		BE29D2902999C9490069D607 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		BE29D2922999C9A30069D607 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		BE29D2972999CE100069D607 /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
+		BE29D2992999F76F0069D607 /* ConsoleLogProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogProtocol.swift; sourceTree = "<group>"; };
 		BE541032298B8B28007EF126 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE541037298B946C007EF126 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		BE54103B298B949E007EF126 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +129,15 @@
 		BE54107129939238007EF126 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = "../../../Downloads/-m-app-main/index.html"; sourceTree = "<group>"; };
 		BE6300E52995DDF00024D131 /* OnBoarding.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OnBoarding.gif; sourceTree = "<group>"; };
 		BE6300EB2995DFC80024D131 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		BE6300EE299601F10024D131 /* RxDataSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSourceViewController.swift; sourceTree = "<group>"; };
+		BE6300F2299602000024D131 /* RxDataSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSourceViewModel.swift; sourceTree = "<group>"; };
+		BE6300F42996025F0024D131 /* RxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSource.swift; sourceTree = "<group>"; };
+		BE6300F6299602DB0024D131 /* GridTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTableViewCell.swift; sourceTree = "<group>"; };
+		BE6300F8299603050024D131 /* IndicatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorTableViewCell.swift; sourceTree = "<group>"; };
+		BE6300FA299603270024D131 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		BE6301002996054B0024D131 /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
+		BE6301022996056E0024D131 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE63010429960BC60024D131 /* RxDataSourceSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSourceSectionModel.swift; sourceTree = "<group>"; };
 		BE6625A0298B7F6600BAB897 /* WebViewPratice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewPratice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6625A3298B7F6600BAB897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6625A5298B7F6600BAB897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,8 +167,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE29D2892999C7C70069D607 /* RealmSwift in Frameworks */,
+				BE29D2872999C7C70069D607 /* Realm in Frameworks */,
 				BE541046298C9671007EF126 /* Alamofire in Frameworks */,
-				BE6300E92995DEA90024D131 /* Gifu in Frameworks */,
 				BE662612298B881300BAB897 /* WebKit.framework in Frameworks */,
 				BE6625DE298B7FF200BAB897 /* RxCocoa in Frameworks */,
 				BE6625D8298B7FBA00BAB897 /* SnapKit in Frameworks */,
@@ -165,6 +199,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE29D2822999C5840069D607 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BE29D2832999C5CE0069D607 /* NaverNewsAPIProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BE29D28A2999C7DC0069D607 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BE54104F298CA021007EF126 /* NaverNewsDTO.swift */,
+				BE29D2922999C9A30069D607 /* LoginDTO.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BE29D28B2999C80F0069D607 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				BE29D2952999CA390069D607 /* Realm */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		BE29D2952999CA390069D607 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BE29D2962999CA490069D607 /* Login */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		BE29D2962999CA490069D607 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BE29D28C2999C81F0069D607 /* LoginData.swift */,
+				BE29D28E2999C8390069D607 /* LoginListData.swift */,
+				BE29D2902999C9490069D607 /* LoginRepository.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BE541034298B92F7007EF126 /* WebScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +257,7 @@
 				BE54105A298CF1AC007EF126 /* Protocol */,
 				BE541036298B938D007EF126 /* Extension */,
 				BE67413A2994B7050062D402 /* LeakAvoider.swift */,
+				BE29D2972999CE100069D607 /* DeviceType.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -216,6 +294,7 @@
 			children = (
 				BE541058298CED7C007EF126 /* NewsSectionModel.swift */,
 				BE54106A2991CC27007EF126 /* TableViewSectionModel.swift */,
+				BE63010429960BC60024D131 /* RxDataSourceSectionModel.swift */,
 			);
 			path = SectionModel;
 			sourceTree = "<group>";
@@ -225,6 +304,7 @@
 			children = (
 				BE54105B298CF1BE007EF126 /* ViewModelType.swift */,
 				BE5410682990F4E2007EF126 /* ReusableProtocol.swift */,
+				BE29D2992999F76F0069D607 /* ConsoleLogProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -243,6 +323,53 @@
 				BE6300EB2995DFC80024D131 /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		BE6300ED299601C50024D131 /* RxDataSoruceScene */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300FE299604EF0024D131 /* View */,
+				BE6300FC299604D70024D131 /* Data Source */,
+				BE6300FD299604E70024D131 /* ViewModel */,
+			);
+			path = RxDataSoruceScene;
+			sourceTree = "<group>";
+		};
+		BE6300FC299604D70024D131 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300F42996025F0024D131 /* RxDataSource.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		BE6300FD299604E70024D131 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300F2299602000024D131 /* RxDataSourceViewModel.swift */,
+				BE6301002996054B0024D131 /* GridViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BE6300FE299604EF0024D131 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300FF299604FD0024D131 /* Cell */,
+				BE6300EE299601F10024D131 /* RxDataSourceViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BE6300FF299604FD0024D131 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6300F6299602DB0024D131 /* GridTableViewCell.swift */,
+				BE6300F8299603050024D131 /* IndicatorTableViewCell.swift */,
+				BE6300FA299603270024D131 /* SwitchTableViewCell.swift */,
+				BE6301022996056E0024D131 /* GridCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		BE662597298B7F6600BAB897 = {
@@ -349,12 +476,13 @@
 		BE6625FA298B827D00BAB897 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BE6300ED299601C50024D131 /* RxDataSoruceScene */,
+				BE6625FC298B82F600BAB897 /* Common */,
+				BE541057298CED6D007EF126 /* SectionModel */,
 				BE6300EA2995DFB70024D131 /* Splash */,
 				BE54106E29935FBB007EF126 /* MediMallScene */,
-				BE541057298CED6D007EF126 /* SectionModel */,
 				BE541034298B92F7007EF126 /* WebScene */,
 				BE662605298B869800BAB897 /* SafariScene */,
-				BE6625FC298B82F600BAB897 /* Common */,
 				BE6625F0298B817500BAB897 /* SearchScene */,
 			);
 			path = Presentation;
@@ -402,6 +530,7 @@
 		BE66260E298B878200BAB897 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BE29D2822999C5840069D607 /* Protocol */,
 				BE541040298C9634007EF126 /* Router.swift */,
 				BE541042298C9643007EF126 /* APIService.swift */,
 				BE541049298C9866007EF126 /* NetworkMonitor.swift */,
@@ -413,7 +542,8 @@
 		BE66260F298B879500BAB897 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				BE54104F298CA021007EF126 /* NaverNewsDTO.swift */,
+				BE29D28B2999C80F0069D607 /* DataBase */,
+				BE29D28A2999C7DC0069D607 /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -452,7 +582,8 @@
 				BE6625E8298B805600BAB897 /* Toast */,
 				BE541045298C9671007EF126 /* Alamofire */,
 				BE5410602990C533007EF126 /* RxKeyboard */,
-				BE6300E82995DEA90024D131 /* Gifu */,
+				BE29D2862999C7C70069D607 /* Realm */,
+				BE29D2882999C7C70069D607 /* RealmSwift */,
 			);
 			productName = WebViewPratice;
 			productReference = BE6625A0298B7F6600BAB897 /* WebViewPratice.app */;
@@ -535,7 +666,7 @@
 				BE6625E7298B805600BAB897 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
-				BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */,
+				BE29D2852999C7C70069D607 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = BE6625A1298B7F6600BAB897 /* Products */;
 			projectDirPath = "";
@@ -586,26 +717,41 @@
 				BE6625AE298B7F6600BAB897 /* WebViewPratice.xcdatamodeld in Sources */,
 				BE662604298B85BC00BAB897 /* SearchView.swift in Sources */,
 				BE6300EC2995DFC80024D131 /* SplashViewController.swift in Sources */,
+				BE6300F3299602000024D131 /* RxDataSourceViewModel.swift in Sources */,
+				BE6300F9299603050024D131 /* IndicatorTableViewCell.swift in Sources */,
 				BE541043298C9643007EF126 /* APIService.swift in Sources */,
 				BE5410672990F315007EF126 /* BaseTableViewCell.swift in Sources */,
 				BE6625A4298B7F6600BAB897 /* AppDelegate.swift in Sources */,
 				BE54104C298C9C4F007EF126 /* URL+Extension.swift in Sources */,
 				BE5410692990F4E2007EF126 /* ReusableProtocol.swift in Sources */,
+				BE29D28D2999C81F0069D607 /* LoginData.swift in Sources */,
+				BE63010529960BC60024D131 /* RxDataSourceSectionModel.swift in Sources */,
 				BE662609298B86D800BAB897 /* SafariView.swift in Sources */,
 				BE541033298B8B28007EF126 /* BaseCollectionViewCell.swift in Sources */,
+				BE6300F52996025F0024D131 /* RxDataSource.swift in Sources */,
+				BE6300F7299602DB0024D131 /* GridTableViewCell.swift in Sources */,
 				BE67413B2994B7050062D402 /* LeakAvoider.swift in Sources */,
+				BE29D2982999CE100069D607 /* DeviceType.swift in Sources */,
+				BE6300FB299603270024D131 /* SwitchTableViewCell.swift in Sources */,
+				BE29D29A2999F76F0069D607 /* ConsoleLogProtocol.swift in Sources */,
 				BE54105E29908824007EF126 /* String+Extension.swift in Sources */,
 				BE5410652990F2EA007EF126 /* SearchTableViewCell.swift in Sources */,
 				BE662607298B86B600BAB897 /* SafariViewController.swift in Sources */,
 				BE54104A298C9866007EF126 /* NetworkMonitor.swift in Sources */,
+				BE6300EF299601F10024D131 /* RxDataSourceViewController.swift in Sources */,
 				BE541056298CE0FC007EF126 /* SafariCollectionViewCell.swift in Sources */,
+				BE29D2932999C9A30069D607 /* LoginDTO.swift in Sources */,
+				BE29D28F2999C8390069D607 /* LoginListData.swift in Sources */,
 				BE6625ED298B815100BAB897 /* SearchViewController.swift in Sources */,
 				BE541059298CED7C007EF126 /* NewsSectionModel.swift in Sources */,
+				BE29D2842999C5CE0069D607 /* NaverNewsAPIProtocol.swift in Sources */,
 				BE6625FE298B830400BAB897 /* BaseViewController.swift in Sources */,
 				BE5410632990DD04007EF126 /* WebView.swift in Sources */,
 				BE541054298CA4E6007EF126 /* EndPoint.swift in Sources */,
+				BE6301032996056E0024D131 /* GridCollectionViewCell.swift in Sources */,
 				BE662602298B840D00BAB897 /* TabViewController.swift in Sources */,
 				BE541041298C9634007EF126 /* Router.swift in Sources */,
+				BE6301012996054B0024D131 /* GridViewModel.swift in Sources */,
 				BE6625A6298B7F6600BAB897 /* SceneDelegate.swift in Sources */,
 				BE54104E298C9E5C007EF126 /* SafariViewModel.swift in Sources */,
 				BE54106D2991D7AF007EF126 /* SearchViewModel.swift in Sources */,
@@ -614,6 +760,7 @@
 				BE54107029935FCB007EF126 /* MediMallViewController.swift in Sources */,
 				BE541052298CA1C1007EF126 /* UIViewController+Extension.swift in Sources */,
 				BE54106B2991CC27007EF126 /* TableViewSectionModel.swift in Sources */,
+				BE29D2912999C9490069D607 /* LoginRepository.swift in Sources */,
 				BE54103C298B949E007EF126 /* WebViewController.swift in Sources */,
 				BE662600298B830800BAB897 /* BaseView.swift in Sources */,
 			);
@@ -959,6 +1106,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BE29D2852999C7C70069D607 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.35.1;
+			};
+		};
 		BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -973,14 +1128,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
-			};
-		};
-		BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kaishin/Gifu.git";
-			requirement = {
-				kind = exactVersion;
-				version = 3.4.0;
 			};
 		};
 		BE6625D6298B7FBA00BAB897 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1034,6 +1181,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BE29D2862999C7C70069D607 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE29D2852999C7C70069D607 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		BE29D2882999C7C70069D607 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE29D2852999C7C70069D607 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		BE541045298C9671007EF126 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BE541044298C9671007EF126 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -1043,11 +1200,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE54105F2990C533007EF126 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
-		};
-		BE6300E82995DEA90024D131 /* Gifu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BE6300E72995DEA90024D131 /* XCRemoteSwiftPackageReference "Gifu" */;
-			productName = Gifu;
 		};
 		BE6625D7298B7FBA00BAB897 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
