@@ -191,14 +191,4 @@ extension WebViewController {
     
 }
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct WebViewController_Preview: PreviewProvider {
-    static var previews: some View {
-        WebViewController().showPreview(.iPhone8)
-    }
-}
-#endif
-
 

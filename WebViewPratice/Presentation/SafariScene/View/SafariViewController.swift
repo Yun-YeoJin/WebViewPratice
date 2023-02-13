@@ -149,3 +149,13 @@ extension SafariViewController {
     
     
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct SafariViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        SafariViewController().toPreview()
+    }
+}
+#endif

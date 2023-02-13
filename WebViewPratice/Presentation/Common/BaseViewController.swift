@@ -12,6 +12,9 @@ class BaseViewController: UIViewController, ConsoleLogProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
+        
         configureUI()
         setConstraints()
         hideKeyboardWhenTappedAround()
@@ -23,9 +26,7 @@ class BaseViewController: UIViewController, ConsoleLogProtocol {
         NetworkMonitor.shared.startMonitoring()
     }
     
-    func configureUI() {
-        view.backgroundColor = .systemBackground
-    }
+    func configureUI() { }
     
     func setConstraints() { }
     
@@ -42,21 +43,27 @@ class BaseViewController: UIViewController, ConsoleLogProtocol {
         
     }
     
-    
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+    
 }
 
 extension BaseViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
     }
+}
+
+//MARK: Objc func Methods
+extension BaseViewController {
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 

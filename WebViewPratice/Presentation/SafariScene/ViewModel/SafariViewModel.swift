@@ -63,7 +63,7 @@ class SafariViewModel: ViewModelType {
     func requestNewsAPI(query: String, display: Int, start: Int, sort: String) -> Observable<[NewsItems]> {
         
         return Observable<[NewsItems]>.create { observer in
-            APIService.shared.requestNewsAPI(type: NaverNewsDTO.self, router: NaverNewsRouter.searchNaverNews(query: query, display: "\(display)", start: "\(start)", sort: sort)) { result in
+            APIService.shared.requestNaverNewsAPI(type: NaverNewsDTO.self, router: NaverNewsRouter.searchNaverNews(query: query, display: "\(display)", start: "\(start)", sort: sort)) { result in
                 switch result {
                 case .success(let success):
                     observer.onNext(success.items)

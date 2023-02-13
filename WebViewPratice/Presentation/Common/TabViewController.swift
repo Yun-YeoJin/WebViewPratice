@@ -29,8 +29,9 @@ final class TabViewController: UITabBarController {
         
         let webVC = setupTabBar(viewController: SearchViewController(), title: "WebView", image: UIImage(systemName: "globe.asia.australia.fill")!)
         let safariVC = setupTabBar(viewController: SafariViewController(), title: "Safari", image: UIImage(systemName: "safari")!)
+        let RxDataSourceVC = setupTabBar(viewController: RxDataSourceViewController(), title: "RxDataSource", image: UIImage(systemName: "doc.richtext")!)
         
-        setViewControllers([webVC, safariVC], animated: true)
+        setViewControllers([webVC, safariVC, RxDataSourceVC], animated: true)
     }
     
     private func setupTabBarAppearence() {

@@ -122,7 +122,7 @@ final class MediMallViewController: BaseViewController {
         let mediComponents = URLComponents(string: "https://m-app.shop/")!
         let mediRequest = URLRequest(url: mediComponents.url!)
         webView.load(mediRequest)
-
+        
     }
     
 }
@@ -132,7 +132,7 @@ extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
     override func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage) {
-
+            
             switch message.name {
             case "submitToiOS":
                 print("submitToiOS 호출 완료 \(message.body)")
@@ -141,7 +141,7 @@ extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
             default:
                 print("error")
             }
-
+            
         }
     
     //무조건 첫번째 실행
@@ -220,12 +220,12 @@ extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         print(#function)
         
-        showAlert(title: "🌈세컨드닥터몰🌈", message: message, btnTitle: "확인", btnStyle: .cancel) { okAction in
+        showAlert(title: "🌈세컨드닥터몰🌈", message: message, btnTitle: "확인", btnStyle: .default) { okAction in
             completionHandler()
         }   cancelBtnAction: { cancelAction in
             return
         }
-    
+        
     }
     
     //Confirm
@@ -233,11 +233,12 @@ extension MediMallViewController: WKNavigationDelegate, WKUIDelegate {
         print(#function)
         
         showConfirm(title: "🌈세컨드닥터몰🌈", message: message, btnTitle: "확인", btnStyle: .default) { okAction in
+            self.createJsonToPass(email: "duwls0349@gmail", name: "윤여진")
             completionHandler(true)
         } cancelBtnAction: { cancelAction in
             completionHandler(false)
         }
-
+        
     }
     
     //Open Window
@@ -272,7 +273,7 @@ extension MediMallViewController {
 
 extension MediMallViewController {
     
-    func createJsonToPass(email: String, name : String = "") {
+    func createJsonToPass(email: String, name : String) {
         
         let data = ["email": email, "name": name] as [String : Any]
         self.jsonString = createJsonForJavaScript(for: data)
@@ -283,7 +284,6 @@ extension MediMallViewController {
         var jsonString : String?
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-            // here "jsonData" is the dictionary encoded in JSON data
             
             jsonString = String(data: jsonData, encoding: .utf8)!
             jsonString = jsonString?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\\", with: "")
